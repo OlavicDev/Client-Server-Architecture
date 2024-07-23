@@ -64,7 +64,7 @@ To demonstrate a basic client-server setup using MySQL RDBMS, follow these steps
 1. **SSH into the MySQL Server:**
 
    ```
-   ssh -i steghub.pem ubuntu@<MYSQL_SERVER_IP>
+   ssh -i steghub.pem ubuntu@18.208.161.17
    ```
 
 2. **Update Package Repository:**
@@ -76,17 +76,21 @@ To demonstrate a basic client-server setup using MySQL RDBMS, follow these steps
 
 3. **Install MySQL Server:**
 
-   ```sh
+   ```
    sudo apt install mysql-server -y
    ```
+![image](https://github.com/user-attachments/assets/729480c0-42be-4cf2-b03f-751be36862c2)
+
 
 ### Connecting to the MySQL Client
 
 1. **SSH into the MySQL Client:**
 
    ```
-   ssh -i steghub.pem ubuntu@<MYSQL_CLIENT_IP>
+   ssh -i steghub.pem ubuntu@54.219.50.131
    ```
+   ![image](https://github.com/user-attachments/assets/8f47fd38-11ec-4669-a093-a3b2e86e830a)
+
 
 2. **Update Package Repository:**
 
@@ -97,9 +101,11 @@ To demonstrate a basic client-server setup using MySQL RDBMS, follow these steps
 
 3. **Install MySQL Client:**
 
-   ```sh
+   ```
    sudo apt install mysql-client -y
    ```
+   ![image](https://github.com/user-attachments/assets/0955f89e-9df8-4710-ae44-697db66cce45)
+
 
 ### Configuring MySQL Server
 
@@ -110,14 +116,17 @@ To demonstrate a basic client-server setup using MySQL RDBMS, follow these steps
    ```
 
    Replace `bind-address = 127.0.0.1` with `0.0.0.0`.
+   ![image](https://github.com/user-attachments/assets/e1084c00-4100-4dd2-ad9a-02cdae1bcd6b)
+   
 
-2. **Access MySQL Shell:**
+
+3. **Access MySQL Shell:**
 
    ```
    sudo mysql
    ```
 
-3. **Create a User and Database:**
+4. **Create a User and Database:**
 
    ```
    CREATE USER 'client'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
@@ -125,17 +134,21 @@ To demonstrate a basic client-server setup using MySQL RDBMS, follow these steps
    GRANT ALL ON test_db.* TO 'client'@'%' WITH GRANT OPTION;
    FLUSH PRIVILEGES;
    ```
+   ![image](https://github.com/user-attachments/assets/dbf17e2b-5393-402e-9fe7-fb5d21d836fb)
 
-4. **Connect to MySQL Server from Client:**
+
+5. **Connect to MySQL Server from Client:**
 
    ```
-   sudo mysql -u client -h <MYSQL_SERVER_IP> -p
+   sudo mysql -u client -h 18.208.161.17 -p
    ```
 
-5. **Verify Connection:**
+6. **Verify Connection:**
 
    ```
    SHOW DATABASES;
    ```
+   ![Uploading image.png…]()
+
 
 By following these steps, you will have successfully set up a fully functional MySQL Client-Server architecture.
